@@ -21,7 +21,7 @@ const InstructionLogin: React.FC = () => {
   };
   return (
     <div className="h-[60vh] w-1/4 p-4 bg-white" style={{boxShadow:"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"}}>
-      <img {...imageProps} className="h-36 m-auto" />
+      <img {...imageProps} className="h-36 m-auto" alt="instructions error"/>
       <h5 className="text-lg font-bold	mt-5 text-center">On registering, you can</h5>
       <Stack
         spacing={2}
@@ -29,7 +29,7 @@ const InstructionLogin: React.FC = () => {
        
       >
         {instructions.map((items, i) => (
-          <Box className="flex ">
+          <Box className="flex" key={i}>
             <BiSolidCheckCircle style={{ color: "#47b749" }} />{" "}
             <Box className="text-slate-600 text-sm font-medium pl-1">
               {items.instr}
