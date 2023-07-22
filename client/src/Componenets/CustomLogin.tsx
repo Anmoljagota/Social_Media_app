@@ -6,10 +6,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import HttpsIcon from "@mui/icons-material/Https";
 import InstructionLogin from "./InstructionLogin";
-import Stack from "@mui/material/Stack";
 import RegisterUserDetails from "../Types/Types";
 import { details_type } from "../Types/Types";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { Link } from "react-router-dom";
 
 type user_input_data_type = {
   details: string;
@@ -17,7 +17,11 @@ type user_input_data_type = {
   name: string;
 };
 
-const CustomLogin: React.FC<details_type> = ({ inputfield, setSignupData }) => {
+const CustomLogin: React.FC<details_type> = ({
+  inputfield,
+  setSignupData,
+  text,
+}) => {
   const [details, setDetails] = useState<RegisterUserDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -71,9 +75,8 @@ const CustomLogin: React.FC<details_type> = ({ inputfield, setSignupData }) => {
   ];
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
- 
-      setDetails({ ...details, [name]: value });
-    
+
+    setDetails({ ...details, [name]: value });
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -82,12 +85,18 @@ const CustomLogin: React.FC<details_type> = ({ inputfield, setSignupData }) => {
   return (
     <div>
       <nav className="bg-white">
-        <Box className="m-auto w-[95%] p-7 flex justify-between items-center">
-          <p>BreakDoor.com</p>
-          <p>Already Registered? Login here</p>
-        </Box>
+        <ul className="m-auto w-[95%] p-7 flex justify-between items-center text-lg">
+          <li>BreakDoor.com</li>
+          <li>
+            Already Registered?{" "}
+            <Link to="/login">
+              <span className="text-blue-600 font-bold">Login</span>
+            </Link>{" "}
+            here
+          </li>
+        </ul>
       </nav>
-      <Box className="h-[100vh] flex justify-center items-center w-[95%] m-auto">
+      <main className="h-[100vh] flex justify-center items-center w-[95%] m-auto">
         <InstructionLogin />
         <Box
           className="flex w-[65%] m-auto h-[90vh] p-[70px]  float-right bg-white"
@@ -139,10 +148,11 @@ const CustomLogin: React.FC<details_type> = ({ inputfield, setSignupData }) => {
                     fontWeight: "700",
                     borderRadius: "10px",
                     padding: "10px",
+                    width: "100%",
                   }}
                   type="submit"
                 >
-                  Register now
+                  {text}
                 </LoadingButton>
               </form>
             </Box>
@@ -153,7 +163,7 @@ const CustomLogin: React.FC<details_type> = ({ inputfield, setSignupData }) => {
             />
           </Box>
         </Box>
-      </Box>
+      </main>
     </div>
   );
 };

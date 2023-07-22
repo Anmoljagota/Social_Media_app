@@ -11,6 +11,7 @@ interface RegisterUserDetails{
     setSignupData: React.Dispatch<
       React.SetStateAction<RegisterUserDetails | null>
     >;
+    text:string
   }
 
   
