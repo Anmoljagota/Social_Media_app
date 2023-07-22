@@ -1,5 +1,6 @@
 import RegisterUserDetails from "../../Types/Types";
-import {USER_SIGNUP_LOADING,USER_SIGNUP_SUCCESS,USER_SIGNUP_ERROR} from "./actionTypes"
+import {USER_SIGNUP_LOADING,USER_SIGNUP_SUCCESS,USER_SIGNUP_ERROR, AppAction} from "./actionTypes"
+
 type initialStateData={
 loading:boolean;
 error:boolean;
@@ -14,7 +15,7 @@ interface action{
     type:string;
     payload?:any;
 }
-const reducer=(state:initialStateData=intial_state,action:action)=>{
+const reducer=(state:initialStateData=intial_state,action:any)=>{
 const {type,payload}=action;
 switch(type){
     case USER_SIGNUP_LOADING:return {...state,loading:true,error:false};
@@ -23,4 +24,5 @@ switch(type){
     default:return state
 }
 }
+
 export {reducer}
