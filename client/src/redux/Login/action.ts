@@ -13,17 +13,26 @@ interface RegisterUserDetails {
   city?: string;
 }
 
-const UserData = (data: RegisterUserDetails): any =>  (dispatch: Dispatch) => {
+const UserData =
+  (data: RegisterUserDetails): any =>
+  (dispatch: Dispatch) => {
+    const postdata =
+      data.PhoneNumber === undefined &&
+      data.city === undefined &&
+      data.PhoneNumber === undefined &&
+      data.name === undefined
+        ? "http://localhost:8000/login"
+        : "http://localhost:8000/register";
     dispatch({ type: USER_SIGNUP_LOADING });
- return  axios
-      .post("http://localhost:8000/register", data)
+    return axios
+      .post(postdata, data)
       .then((res) => {
+        console.log("res data",res.data)
         dispatch({ type: USER_SIGNUP_SUCCESS, payload: res.data });
       })
       .catch((err) => {
-        dispatch({ type: USER_SIGNUP_ERROR ,payload:err});
+        dispatch({ type: USER_SIGNUP_ERROR, payload: err });
       });
   };
-
 
 export { UserData };

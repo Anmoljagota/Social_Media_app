@@ -73,6 +73,27 @@ const CustomLogin: React.FC<details_type> = ({
       name: "city",
     },
   ];
+
+  const LoginPlaceholder: user_input_data_type[] = [
+    {
+      details: "email",
+      icon: (
+        <EmailIcon
+          style={{ marginTop: "30px", padding: "5px", fontSize: "30px" }}
+        />
+      ),
+      name: "email",
+    },
+    {
+      details: "password",
+      icon: (
+        <HttpsIcon
+          style={{ marginTop: "30px", padding: "5px", fontSize: "30px" }}
+        />
+      ),
+      name: "password",
+    },
+  ];
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -87,13 +108,23 @@ const CustomLogin: React.FC<details_type> = ({
       <nav className="bg-white">
         <ul className="m-auto w-[95%] p-7 flex justify-between items-center text-lg">
           <li>BreakDoor.com</li>
-          <li>
-            Already Registered?{" "}
-            <Link to="/login">
-              <span className="text-blue-600 font-bold">Login</span>
-            </Link>{" "}
-            here
-          </li>
+          {inputfield > 2 ? (
+            <li>
+              Already Registered?
+              <Link to="/login">
+                <span className="text-blue-600 font-bold"> Register</span>
+              </Link>{" "}
+              here
+            </li>
+          ) : (
+            <li>
+              New to BreakDoor
+              <Link to="/register">
+                <span className="text-blue-600 font-bold"> Login</span>
+              </Link>{" "}
+              here
+            </li>
+          )}
         </ul>
       </nav>
       <main className="h-[100vh] flex justify-center items-center w-[95%] m-auto">
@@ -111,18 +142,28 @@ const CustomLogin: React.FC<details_type> = ({
               <form onSubmit={handleSubmit}>
                 {myinputs.map((items, i) => (
                   <Box key={i}>
-                    {userdata[i].icon}
+                    {inputfield > 2
+                      ? userdata[i].icon
+                      : LoginPlaceholder[i].icon}
 
                     <TextField
                       id="standard-basic"
-                      label={userdata[i].details}
+                      label={
+                        inputfield > 2
+                          ? userdata[i].details
+                          : LoginPlaceholder[i].details
+                      }
                       variant="standard"
                       style={{
                         width: "90%",
                         padding: "5px",
                         marginTop: "10px",
                       }}
-                      name={userdata[i].name}
+                      name={
+                        inputfield > 2
+                          ? userdata[i].name
+                          : LoginPlaceholder[i].name
+                      }
                       onChange={handleChange}
                     />
                     <br />
