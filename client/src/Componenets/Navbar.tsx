@@ -4,7 +4,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { RiMessage2Fill } from "react-icons/ri";
 import styles from "../AllCss/Navbar.module.css";
 import DropDown from "./DropDown";
-import DehazeIcon from "@mui/icons-material/Dehaze";
+
 import PersistentDrawerLeft from "./Hameburger";
 type Navbarcss = {
   maincss: string;
@@ -12,10 +12,7 @@ type Navbarcss = {
 
 const Navbar: React.FC<Navbarcss> = ({ maincss }) => {
   return (
-    <nav
-      className="h-20 bg-white sticky z-50 cursor-pointer w-[100%]"
-     
-    >
+    <nav className="h-20 bg-white fixed top-0	 z-50 cursor-pointer w-[100%]">
       <ul className={maincss}>
         <li className="lg:hidden">
           <PersistentDrawerLeft />
@@ -46,14 +43,14 @@ const Navbar: React.FC<Navbarcss> = ({ maincss }) => {
             </Badge>
           </li>
           <li>
-            <Badge badgeContent={5} color="error" className="flex" >
+            <Badge badgeContent={5} color="error" className="flex">
               <RiMessage2Fill className="text-2xl" />
             </Badge>
           </li>
           <li className="hidden lg:flex">
             <img
               className="h-8 w-8	rounded-[100px] md:hidden lg:flex sm:hidden hidden"
-              src="https://th.bing.com/th/id/R.6447203e2ac778c1088792ed6ba39c85?rik=ccpaj0GtdqxSHQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-xMmffgfkHF0%2fUApbyjPPJVI%2fAAAAAAAAAaw%2fZbezrexfRVM%2fs1600%2fkajal-agarwal-spicy-transparent-saree-stills-004.jpg&ehk=vuripsitEo3gaiQUg6Wd8F5%2fXD2qxHn%2fjofS2bDnCRg%3d&risl=&pid=ImgRaw&r=0"
+              src="https://wallpapercave.com/wp/wp7900881.jpg"
               alt="issue with login"
             />
           </li>

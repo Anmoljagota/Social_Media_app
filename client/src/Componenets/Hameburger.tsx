@@ -85,8 +85,7 @@ export default function PersistentDrawerLeft() {
   return (
     <Box  >
     
-      {/* <AppBar position="fixed" open={open} style={{border:"4px solid blue"}}> */}
-        {/* <Toolbar> */}
+      
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -94,13 +93,11 @@ export default function PersistentDrawerLeft() {
             edge="start"
             style={{marginLeft:"50px"}}
             
-            // sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            
           >
             <MenuIcon />
           </IconButton>
-        
-        {/* </Toolbar> */}
-      {/* </AppBar> */}
+       
       <Drawer
         sx={{
           width: drawerWidth,
@@ -146,11 +143,7 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
       </Drawer>
-      {/* <Main open={open}>
-        <DrawerHeader />
-       
-       
-      </Main> */}
+    
     </Box>
   );
 }
