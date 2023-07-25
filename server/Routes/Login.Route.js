@@ -1,32 +1,37 @@
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const { con } = require("../Config/db");
 const loginRouter = express.Router();
 const bcrypt = require("bcrypt");
 loginRouter.post("/login", (req, res) => {
   const { email, password } = req.body;
-  const CheckQuery =
-    "SELECT * FROM UserRegistrationDetails WHERE email=? AND password=?";
+  const CheckQuery = "SELECT * FROM UserRegistrationDetails WHERE email=?";
 
-  con.query(CheckQuery, [email, password], async (err, result) => {
+  con.query(CheckQuery, [email], async (err, result) => {
     if (err) {
-      res.send(err);
+      res.send("user does't exist with this failed");
     } else {
-      if (result.length > 0) {
-        const hashPassword = result[0].password;
+      try {
+        if (result.length > 0) {
+          const hashPassword = result[0].password;
+          const userid = result[0].UserId;
 
-        try {
           await bcrypt.compare(password, hashPassword, function (err, result) {
             if (err) {
               res.send(err);
+            } else if (result) {
+              const token = jwt.sign({ userId: userid }, "loginornot");
+
+              res.send(token);
             } else {
-              res.send("User Login Success");
+              res.send("Login Failed");
             }
           });
-        } catch (err) {
-          res.send(err);
+        } else {
+          res.send("User Login Failed");
         }
-      } else {
-        res.send("User Login Failed");
+      } catch (err) {
+        res.send(err);
       }
     }
   });
