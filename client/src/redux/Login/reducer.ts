@@ -1,4 +1,5 @@
 import RegisterUserDetails from "../../Types/Types";
+import {action} from "../../Types/Types";
 import {
   USER_SIGNUP_LOADING,
   USER_SIGNUP_SUCCESS,
@@ -15,10 +16,7 @@ const intial_state: initialStateData = {
   error: false,
   UserDetails: {},
 };
-interface action {
-  type: string;
-  payload?: any;
-}
+
 const reducer = (state: initialStateData = intial_state, action: action) => {
   const { type, payload } = action;
   switch (type) {

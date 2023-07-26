@@ -14,6 +14,23 @@ interface RegisterUserDetails{
     text:string
   }
 
-  
+  export interface action {
+    type: string;
+    payload?: any;
+  }
+ export interface postdataobject {
+    postId: number;
+    description: string;
+    image: string;
+    timestamp_column: string;
+    userId: number;
+    name: string;
+    email: string;
+  }
+ export interface intial_data {
+    loading: boolean;
+    error: boolean;
+    postdata: postdataobject[];
+  }
 
   export default RegisterUserDetails

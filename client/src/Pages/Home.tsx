@@ -11,7 +11,7 @@ const Home = () => {
       // style={{ border: "2px solid black" }}
     >
       <Box
-        className="flex w-[85%] m-auto items-center justify-between"
+        className="flex w-[85%] m-auto  justify-between"
         // border="2px solid red"
       >
         <Profile />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
-const PostProfile = () => {
+const PostProfile = ({name}:{name:string}) => {
   return (
     <div className="w-[95%] m-auto p-1">
       <Stack direction="row" spacing={1}>
@@ -11,7 +11,7 @@ const PostProfile = () => {
         />
         <Box>
           <p className="text-base font-semibold decoration-[none solid rgb(10,102,194)]">
-            Anmol Jagota{" "}
+           {name}
             <span
               className="text-base text-slate-500"
               style={{ textDecoration: "none solid rgba(0,0,0,0.9)" }}

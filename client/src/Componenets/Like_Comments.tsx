@@ -16,7 +16,7 @@ const Like_Comments = () => {
     { icon: <BsFillSendFill />, name: "Send" },
   ];
   return (
-    <footer className="flex justify-between items-center w-[90%] m-auto text-xl text-slate-600 mt-10">
+    <footer className="flex justify-between items-center w-[90%] m-auto text-xl text-slate-600 mt-1">
       {social_links_details.map((ele, i) => {
         return (
           <Box className="flex justify-between items-center" key={i}>
