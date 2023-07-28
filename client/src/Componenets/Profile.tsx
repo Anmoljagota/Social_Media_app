@@ -5,7 +5,7 @@ import ProfileDetails from "./UserProfile/ProfileDetails";
 const Profile = () => {
   return (
     <div
-      className="w-[22%] h-[100vh] rounded-xl font-normal leading-5 bg-[white] sticky top-14"
+      className="w-[25%] h-[100vh] rounded-xl font-normal leading-5 bg-[white] sticky top-14"
       style={{
         border: "1px solid #e7e7f1",
         fontFamily: "Satoshi",
@@ -15,7 +15,7 @@ const Profile = () => {
     >
       <Box className="flex  items-center flex-col text-center text-[12px]">
         <img
-          src="https://th.bing.com/th/id/OIP.uWncwmu7lQL8D0bu7U7y7QHaFz?pid=ImgDet&rs=1"
+          src="https://th.bing.com/th/id/R.d1539c5866cbade1fa3baa60ab22947b?rik=ylz48fJVEinCXg&riu=http%3a%2f%2fclipart-library.com%2fimages%2fpTqre6K8c.jpg&ehk=cGvYf7tkBaV%2f9loyHSKIcMvPLg7qKw4VmyVuOBkUu%2fY%3d&risl=&pid=ImgRaw&r=0"
           className="w-[70px]	h-[70px] rounded-[50%] ml-[9px] mr-[9px]"
           style={{ border: "5px solid #44E744" }}
         />

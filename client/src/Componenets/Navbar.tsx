@@ -6,11 +6,15 @@ import styles from "../AllCss/Navbar.module.css";
 import DropDown from "./DropDown";
 
 import PersistentDrawerLeft from "./Hameburger";
+import Popover from "./Popover";
 type Navbarcss = {
   maincss: string;
 };
 
 const Navbar: React.FC<Navbarcss> = ({ maincss }) => {
+
+  const [show, setShow] = useState<boolean>(false);
+  
   return (
     <nav className="h-20 bg-white fixed top-0	 z-50 cursor-pointer w-[100%]">
       <ul className={maincss}>
@@ -47,13 +51,27 @@ const Navbar: React.FC<Navbarcss> = ({ maincss }) => {
               <RiMessage2Fill className="text-2xl" />
             </Badge>
           </li>
-          <li className="hidden lg:flex">
+          <li
+            className="hidden lg:flex relative"
+            onClick={() => setShow(!show)}
+          >
             <img
               className="h-8 w-8	rounded-[100px] md:hidden lg:flex sm:hidden hidden"
               src="https://wallpapercave.com/wp/wp7900881.jpg"
               alt="issue with login"
             />
           </li>
+          {show && (
+            <div
+              className="absolute mt-[48vh] mr-2 z-10 h-[40vh] w-[14vw] bg-white"
+              style={{
+                boxShadow:
+                  "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
+              }}
+            >
+              <Popover />
+            </div>
+          )}
           {/* <DropDown/> */}
         </ul>
       </ul>

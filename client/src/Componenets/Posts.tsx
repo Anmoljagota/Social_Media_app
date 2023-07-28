@@ -11,26 +11,24 @@ interface detail {
 }
 const Posts = () => {
   const dispatch = useDispatch();
-  const {postdata} = useSelector((details: detail) => {
+  const { postdata } = useSelector((details: detail) => {
     return details.postData;
   }, shallowEqual);
   console.log("ia m data", postdata);
   React.useEffect(() => {
     dispatch(GET_POST_DATA());
   }, []);
-  
+
   return (
     <div
       style={{
         boxShadow:
           "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-          
       }}
-      className="w-[40%] h-[auto] cursor-pointer"
+      className="w-[44%] h-[auto] cursor-pointer"
     >
-      {postdata.map((items)=>(
-        <SinglePost data={items} key={items.postId}/>
-
+      {postdata.map((items) => (
+        <SinglePost data={items} key={items.postId} />
       ))}
     </div>
   );

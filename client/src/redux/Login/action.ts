@@ -2,6 +2,9 @@ import {
   USER_SIGNUP_LOADING,
   USER_SIGNUP_ERROR,
   USER_SIGNUP_SUCCESS,
+  USER_LOGIN_LOADING,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_ERROR,
 } from "./actionTypes";
 import { Dispatch } from "redux";
 import axios from "axios";
@@ -16,18 +19,11 @@ interface RegisterUserDetails {
 const UserData =
   (data: RegisterUserDetails): any =>
   (dispatch: Dispatch) => {
-    const postdata =
-      data.PhoneNumber === undefined &&
-      data.city === undefined &&
-      data.PhoneNumber === undefined &&
-      data.name === undefined
-        ? "http://localhost:8000/login"
-        : "http://localhost:8000/register";
     dispatch({ type: USER_SIGNUP_LOADING });
     return axios
-      .post(postdata, data)
+      .post("http://localhost:8000/register", data)
       .then((res) => {
-        console.log("res data",res.data)
+        console.log("res data", res.data);
         dispatch({ type: USER_SIGNUP_SUCCESS, payload: res.data });
       })
       .catch((err) => {
@@ -35,4 +31,22 @@ const UserData =
       });
   };
 
-export { UserData };
+//LOGIN LOGIN
+const LoginUser =
+  (data: RegisterUserDetails): any =>
+  (dispatch: Dispatch) => {
+    dispatch({ type: USER_SIGNUP_LOADING });
+    return axios
+      .post("http://localhost:8000/login", data)
+      .then((res) => {
+     
+        if (res.data !== "Wrong Credentials") {
+          localStorage.setItem("token", res.data);
+        }
+        dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({ type: USER_SIGNUP_ERROR, payload: err });
+      });
+  };
+export { UserData , LoginUser };

@@ -10,6 +10,8 @@ import RegisterUserDetails from "../Types/Types";
 import { details_type } from "../Types/Types";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Link } from "react-router-dom";
+import LoginNavbar from "./LoginNavbar";
+import { shallowEqual, useSelector } from "react-redux";
 
 type user_input_data_type = {
   details: string;
@@ -24,7 +26,7 @@ const CustomLogin: React.FC<details_type> = ({
 }) => {
   const [details, setDetails] = useState<RegisterUserDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-
+  
   const myinputs = new Array(inputfield).fill("-");
   const userdata: user_input_data_type[] = [
     {
@@ -105,28 +107,7 @@ const CustomLogin: React.FC<details_type> = ({
   };
   return (
     <div>
-      <nav className="bg-white">
-        <ul className="m-auto w-[95%] p-7 flex justify-between items-center text-lg">
-          <li>BreakDoor.com</li>
-          {inputfield > 2 ? (
-            <li>
-              Already Registered?
-              <Link to="/login">
-                <span className="text-blue-600 font-bold"> Register</span>
-              </Link>{" "}
-              here
-            </li>
-          ) : (
-            <li>
-              New to BreakDoor
-              <Link to="/register">
-                <span className="text-blue-600 font-bold"> Login</span>
-              </Link>{" "}
-              here
-            </li>
-          )}
-        </ul>
-      </nav>
+  {localStorage.getItem("token")==undefined && <LoginNavbar inputfield={inputfield}/>}
       <main className="h-[100vh] flex justify-center items-center w-[95%] m-auto">
         <InstructionLogin />
         <Box
