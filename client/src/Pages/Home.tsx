@@ -1,11 +1,11 @@
 import React from "react";
-import Profile from "../Componenets/Profile";
-import Posts from "../Componenets/Posts";
-import Messages from "../Componenets/Messages";
+import Profile from "../Componenets/PostData/Profile";
+import Posts from "../Componenets/PostData/Posts";
+import Messages from "../Componenets/PostData/Messages";
 import { Box } from "@mui/material";
 
 const Home = () => {
-  console.log("hloooooooooo")
+  console.log("hloooooooooo");
   return (
     <div
       className=" w-[4/4] mt-28 h-[100vh]"

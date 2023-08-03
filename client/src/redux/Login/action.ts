@@ -39,7 +39,7 @@ const LoginUser =
     return axios
       .post("http://localhost:8000/login", data)
       .then((res) => {
-     
+     console.log(res.data,"ressssss")
         if (res.data !== "Wrong Credentials") {
           localStorage.setItem("token", res.data);
         }

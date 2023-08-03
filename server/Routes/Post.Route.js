@@ -18,14 +18,18 @@ Post_Route.post("/post", LoginMiddleware, (req, res) => {
 });
 
 Post_Route.get("/post", async (req, res) => {
-  con.query("SELECT * FROM user_posts", (err, result) => {
+  const userId=req.params.id;
+  console.log("i am userid",req.params)
+  const query =
+    "SELECT user_posts.postId,user_posts.description,user_posts.image,user_posts.timestamp_column,userregistrationdetails.userId,userregistrationdetails.name,userregistrationdetails.email from user_posts JOIN userregistrationdetails ON user_posts.userId=userregistrationdetails.userId";
+  con.query(query, (err, result) => {
     try {
       if (err) {
         res.send(err);
       } else if (result) {
         res.send(result);
       } else {
-        res.send("get post some error");
+        res.send("getting post some error");
       }
     } catch (err) {
       res.send(err);

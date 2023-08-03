@@ -3,7 +3,7 @@ import Badge from "@mui/material/Badge";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { RiMessage2Fill } from "react-icons/ri";
 import styles from "../AllCss/Navbar.module.css";
-import DropDown from "./DropDown";
+// import DropDown from "./DropDown";
 
 import PersistentDrawerLeft from "./Hameburger";
 import Popover from "./Popover";
@@ -12,9 +12,8 @@ type Navbarcss = {
 };
 
 const Navbar: React.FC<Navbarcss> = ({ maincss }) => {
-
   const [show, setShow] = useState<boolean>(false);
-  
+
   return (
     <nav className="h-20 bg-white fixed top-0	 z-50 cursor-pointer w-[100%]">
       <ul className={maincss}>

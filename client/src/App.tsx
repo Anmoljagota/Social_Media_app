@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import AllRoutes from "./Routes/AllRoutes";
-import Navbar from "./Componenets/Navbar";
+import Navbar from "./Componenets/Navbar/Navbar";
 import { shallowEqual, useSelector } from "react-redux";
 
 function App() {

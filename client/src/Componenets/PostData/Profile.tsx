@@ -1,6 +1,6 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
-import ProfileDetails from "./UserProfile/ProfileDetails";
+import ProfileDetails from "../UserProfile/ProfileDetails";
 
 const Profile = () => {
   return (

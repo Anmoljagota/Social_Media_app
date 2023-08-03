@@ -1,9 +1,9 @@
 import React from "react";
 import PostProfile from "./PostProfile";
 import SinglePost from "./SinglePost";
-import { GET_POST_DATA } from "../redux/SiteDta/action";
+import { GET_POST_DATA } from "../../redux/SiteDta/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { intial_data } from "../Types/Types";
+import { intial_data } from "../../Types/Types";
 interface register_data {}
 interface detail {
   postData: intial_data;

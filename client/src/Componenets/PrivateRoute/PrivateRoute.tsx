@@ -7,7 +7,7 @@ const PrivateRoute = ({children}:{children:any}) => {
   
     
 if(localStorage.getItem("token")===null){
-return <Navigate to="/register"/>
+return <Navigate to="/login"/>
 }
 return children;
 }

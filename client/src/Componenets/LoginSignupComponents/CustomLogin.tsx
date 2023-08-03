@@ -6,12 +6,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import HttpsIcon from "@mui/icons-material/Https";
 import InstructionLogin from "./InstructionLogin";
-import RegisterUserDetails from "../Types/Types";
-import { details_type } from "../Types/Types";
+import RegisterUserDetails from "../../Types/Types";
+import { details_type } from "../../Types/Types";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Link } from "react-router-dom";
 import LoginNavbar from "./LoginNavbar";
-import { shallowEqual, useSelector } from "react-redux";
 
 type user_input_data_type = {
   details: string;
@@ -21,12 +19,13 @@ type user_input_data_type = {
 
 const CustomLogin: React.FC<details_type> = ({
   inputfield,
-  setSignupData,
+  handleSubmit,
   text,
+  setDetails,
+  details,
 }) => {
-  const [details, setDetails] = useState<RegisterUserDetails | null>(null);
+  // const [details, setDetails] = useState<RegisterUserDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  
   const myinputs = new Array(inputfield).fill("-");
   const userdata: user_input_data_type[] = [
     {
@@ -101,15 +100,14 @@ const CustomLogin: React.FC<details_type> = ({
 
     setDetails({ ...details, [name]: value });
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSignupData(details);
-  };
+
   return (
     <div>
-  {localStorage.getItem("token")==undefined && <LoginNavbar inputfield={inputfield}/>}
+      {localStorage.getItem("token") == undefined && (
+        <LoginNavbar inputfield={inputfield} />
+      )}
       <main className="h-[100vh] flex justify-center items-center w-[95%] m-auto">
-        <InstructionLogin />
+      <InstructionLogin instructionText={text}/>
         <Box
           className="flex w-[65%] m-auto h-[90vh] p-[70px]  float-right bg-white"
           boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
@@ -190,4 +188,4 @@ const CustomLogin: React.FC<details_type> = ({
   );
 };
 
-export default CustomLogin;
+export default React.memo(CustomLogin);

@@ -24,11 +24,11 @@ loginRouter.post("/login", (req, res) => {
 
               res.send(token);
             } else {
-              res.send("Login Failed");
+              res.send("Wrong Credentials");
             }
           });
         } else {
-          res.send("User Login Failed");
+          res.send("Wrong Credentials");
         }
       } catch (err) {
         res.send(err);

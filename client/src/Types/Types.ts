@@ -8,10 +8,12 @@ interface RegisterUserDetails{
 
   export interface details_type {
     inputfield: number;
-    setSignupData: React.Dispatch<
-      React.SetStateAction<RegisterUserDetails | null>
-    >;
-    text:string
+    setDetails: React.Dispatch<
+    React.SetStateAction<RegisterUserDetails | null>
+  >;
+  handleSubmit:(setDetails:any)=>void;
+    text:string;
+details:RegisterUserDetails | null
   }
 
   export interface action {

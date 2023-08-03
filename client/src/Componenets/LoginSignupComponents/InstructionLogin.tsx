@@ -8,7 +8,7 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 interface instruction_details {
   instr: string;
 }
-const InstructionLogin: React.FC = () => {
+const InstructionLogin = ({ instructionText }: { instructionText: string }) => {
   const instructions: instruction_details[] = [
     { instr: "Build your profile and let recruiters find you" },
     { instr: "Get job postings delivered right to your email" },
@@ -20,14 +20,18 @@ const InstructionLogin: React.FC = () => {
     alt: "Description of the image",
   };
   return (
-    <div className="h-[60vh] w-1/4 p-4 bg-white" style={{boxShadow:"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"}}>
-      <img {...imageProps} className="h-36 m-auto" alt="instructions error"/>
-      <h5 className="text-lg font-bold	mt-5 text-center">On registering, you can</h5>
-      <Stack
-        spacing={2}
-        className="m-auto w-[95%] mt-2"
-       
-      >
+    <div
+      className="h-[60vh] w-1/4 p-4 bg-white"
+      style={{
+        boxShadow:
+          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
+      }}
+    >
+      <img {...imageProps} className="h-36 m-auto" alt="instructions error" />
+      <h5 className="text-lg font-bold	mt-5 text-center">
+        On {instructionText}, you can
+      </h5>
+      <Stack spacing={2} className="m-auto w-[95%] mt-2">
         {instructions.map((items, i) => (
           <Box className="flex" key={i}>
             <BiSolidCheckCircle style={{ color: "#47b749" }} />{" "}
