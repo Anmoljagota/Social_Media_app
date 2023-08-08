@@ -5,7 +5,7 @@ import Messages from "../Componenets/PostData/Messages";
 import { Box } from "@mui/material";
 
 const Home = () => {
-  console.log("hloooooooooo");
+ 
   return (
     <div
       className=" w-[4/4] mt-28 h-[100vh]"

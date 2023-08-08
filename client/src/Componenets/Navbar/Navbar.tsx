@@ -3,8 +3,6 @@ import Badge from "@mui/material/Badge";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { RiMessage2Fill } from "react-icons/ri";
 import styles from "../AllCss/Navbar.module.css";
-// import DropDown from "./DropDown";
-
 import PersistentDrawerLeft from "./Hameburger";
 import Popover from "./Popover";
 type Navbarcss = {
