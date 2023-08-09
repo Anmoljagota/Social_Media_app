@@ -1,4 +1,6 @@
+import CustomizedDialogs from "../Modal";
 import NameImage from "../UserProfile/NameImage";
+
 const Popover = () => {
   return (
     <div className="bg-white">
@@ -13,7 +15,8 @@ const Popover = () => {
         >
           View Profile
         </button>
-        <button>Post</button>
+        <CustomizedDialogs/>
+        
       </div>
     </div>
   );
