@@ -3,6 +3,9 @@ import {
   POST_DATA_LOADING,
   POST_DATA_SUCCESS,
   POST_DATA_ERROR,
+  ADD_POST_DATA_LOADING,
+  ADD_POST_DATA_SUCCESS,
+  ADD_POST_DATA_ERROR
 } from "./actionTypes";
 
 import { intial_data } from "../../Types/Types";
@@ -21,6 +24,9 @@ const reducer = (state: intial_data = intial_state, action: action) => {
       return { ...state, loading: false, error: false, postdata: payload };
     case POST_DATA_ERROR:
       return { ...state, loading: false, error: true };
+      case ADD_POST_DATA_LOADING:return {...state,loading:true,errro:false};
+      case ADD_POST_DATA_SUCCESS:return {...state,loading:false}
+      case ADD_POST_DATA_ERROR:return {...state,loading:false,error:true}
     default:
       return state;
   }
