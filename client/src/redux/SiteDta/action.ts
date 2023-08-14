@@ -22,16 +22,24 @@ const GET_POST_DATA = (): any => (dispatch: Dispatch) => {
 };
 
 const ADD_POST_DATA =
-  (data: any): any =>
+  (formdata: any): any =>
   (dispatch: Dispatch) => {
+    console.log("kkkkkk", formdata);
     dispatch({ type: ADD_POST_DATA_LOADING });
     axios
-      .post("http://localhost:8000/post")
+      .post("http://localhost:8000/post", formdata, {
+        headers: {
+          "Content-Type": "multipart/formdata",
+          auth: localStorage.getItem("token"),
+        },
+      })
       .then((res) => {
-        dispatch({ type: ADD_POST_DATA_SUCCESS, payload: res.data });
+        console.log(res, "resssss");
+        dispatch({ type: ADD_POST_DATA_SUCCESS });
       })
       .catch((err) => {
+        console.log(err, "errrrrror");
         dispatch({ type: ADD_POST_DATA_ERROR, payload: err });
       });
   };
-export { GET_POST_DATA , ADD_POST_DATA};
+export { GET_POST_DATA, ADD_POST_DATA };

@@ -57,7 +57,8 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
 }
 
 export default function CustomizedDialogs() {
-  const dispatch=useDispatch()
+  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
   const buttonstyle = {
     backgroundColor: "#0a66c2",
     color: "#fff",
@@ -80,6 +81,8 @@ export default function CustomizedDialogs() {
   const [open, setOpen] = React.useState(false);
   const [selectedFile, setselectedFile] = React.useState<string | null>(null);
   const [isDisabled, setisDisabled] = React.useState<boolean>(false);
+  const [newfile, setNewfile] = React.useState<string | Blob>("");
+  const [description, setDescription] = React.useState<string>("");
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -88,7 +91,9 @@ export default function CustomizedDialogs() {
   };
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+
     if (file) {
+      setNewfile(file);
       const reader = new FileReader();
       reader.onload = (e) => {
         setselectedFile(e.target?.result as string);
@@ -101,14 +106,20 @@ export default function CustomizedDialogs() {
   };
   const handleDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (event.target.value.length > 0) {
+      setDescription(event.target.value);
       setisDisabled(true);
     } else {
       setisDisabled(false);
     }
   };
-  const handlePostData=()=>{
-// dispatch(ADD_POST_DATA())
-  }
+  const handlePostData = () => {
+    const formdata = new FormData();
+    formdata.append("file", newfile);
+    formdata.append("description", JSON.stringify(description));
+  
+    dispatch(ADD_POST_DATA(formdata));
+  };
+  console.log("i am fileeee", newfile);
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -129,8 +140,6 @@ export default function CustomizedDialogs() {
           />
         </BootstrapDialogTitle>
         <DialogContent dividers>
-         
-
           <Typography gutterBottom>
             <textarea
               className="p-3"
@@ -140,7 +149,7 @@ export default function CustomizedDialogs() {
               cols={68}
               placeholder="what do you want to talk about?"
               onChange={handleDescription}
-              ></textarea>
+            ></textarea>
           </Typography>
           <Typography>
             {selectedFile && (
@@ -154,40 +163,40 @@ export default function CustomizedDialogs() {
                     width="100%"
                     height="500"
                     style={{ border: "1px solid red" }}
-                    />
-                    )}
+                  />
+                )}
               </div>
             )}
           </Typography>
           <Typography
             gutterBottom
             className="flex items-center justify-between w-[40%]"
-            >
+          >
             {icons.map((ele, index) => {
               return (
                 <label htmlFor="file" key={index}>
                   <Box className="bg-[#f3f2ef] p-3 rounded-3xl text-[#666] text-lg hover:p-[15px] cursor-pointer">
                     {ele.icon}
                   </Box>
+
                   <input
                     type="file"
                     id="file"
                     name="file"
                     className="hidden"
                     onChange={handleFileChange}
-                    ></input>
+                  ></input>
                 </label>
               );
             })}
           </Typography>
-        
         </DialogContent>
         <DialogActions>
           <Button
             autoFocus
             style={isDisabled ? buttonstyle : buttonstyleDisabled}
             onClick={handlePostData}
-            >
+          >
             Post
           </Button>
         </DialogActions>
