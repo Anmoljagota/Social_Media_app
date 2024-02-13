@@ -7,7 +7,7 @@ const Home = () => {
  
   return (
     <div className=" w-[4/4] mt-28">
-      <Box className="flex w-[80%] m-auto  justify-between">
+      <Box className="flex w-[90%] m-auto  justify-between">
         <Profile />
         <Posts />
         <Messages />
