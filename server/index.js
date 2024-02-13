@@ -15,7 +15,7 @@ app.use("/", Post_Route);
 app.listen(process.env.port, async () => {
   try {
     await con;
-    console.log(`server is running on port ${process.env.port}`);
+    console.log(`server is running on port ${process.env.PORT}`);
   } catch {
     console.log(`some error ${err}`);
   }

@@ -102,25 +102,38 @@ const CustomLogin: React.FC<details_type> = ({
   };
 
   return (
-    <div>
-      {localStorage.getItem("token") == undefined && (
-        <LoginNavbar inputfield={inputfield} />
-      )}
-      <main className="h-[100vh] flex justify-center items-center w-[95%] m-auto">
-      <InstructionLogin instructionText={text}/>
+    <>
+      <Box className="xsm:hidden sm:block">
+        {localStorage.getItem("token") == undefined && (
+          <LoginNavbar inputfield={inputfield} />
+        )}
+      </Box>
+
+      <main
+        className="flex justify-evenly  md:w-[95%] xsm:w-full m-auto"
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+        }}
+      >
+        <Box className="bg-white xsm:hidden md:block h-[100%]">
+          <InstructionLogin instructionText={text} />
+        </Box>
         <Box
-          className="flex w-[65%] m-auto h-[90vh] p-[70px]  float-right bg-white"
+          className="flex  pt-[70px]  pb-[70px] pl-7 pr-7   float-right bg-white md:w-[45%] xsm:w-full"
           boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
         >
           <Box className="flex justify-between items-center w-[100%] m-auto min-h-full">
-            <Box className="w-2/4 min-h-full text-center">
-              <h2 className="font-bold text-xl">
+            <Box className=" min-h-full text-center w-full lg:pr-6">
+              <h2 className="font-bold text-xl text-left">
                 Find a job & grow your career
               </h2>
-              <br />
-              <form onSubmit={handleSubmit}>
+
+              <form onSubmit={handleSubmit} className="mt-8">
                 {myinputs.map((items, i) => (
-                  <Box key={i}>
+                  <Box key={i} display={"flex"}>
                     {inputfield > 2
                       ? userdata[i].icon
                       : LoginPlaceholder[i].icon}
@@ -134,9 +147,9 @@ const CustomLogin: React.FC<details_type> = ({
                       }
                       variant="standard"
                       style={{
-                        width: "90%",
                         padding: "5px",
                         marginTop: "10px",
+                        width: "100%",
                       }}
                       name={
                         inputfield > 2
@@ -148,7 +161,7 @@ const CustomLogin: React.FC<details_type> = ({
                     <br />
                   </Box>
                 ))}
-                <br />
+
                 {/* <Stack>
                 <h4 className="">Resume</h4>
                 <label
@@ -163,12 +176,12 @@ const CustomLogin: React.FC<details_type> = ({
                   variant="contained"
                   loadingIndicator="Loading…"
                   loading={loading}
-                  className="float-left"
                   style={{
                     fontWeight: "700",
                     borderRadius: "10px",
                     padding: "10px",
                     width: "100%",
+                    marginTop: "25px",
                   }}
                   type="submit"
                 >
@@ -177,14 +190,14 @@ const CustomLogin: React.FC<details_type> = ({
               </form>
             </Box>
             <img
-              className="h-[200px] w-[220px]"
+              className="h-[200px] w-[220px] xsm:hidden lg:block"
               src="https://thumbs.dreamstime.com/z/young-woman-works-laptops-home-freelancer-girl-self-employed-online-education-distance-learning-concept-video-call-195563818.jpg"
               alt="something wrong "
             />
           </Box>
         </Box>
       </main>
-    </div>
+    </>
   );
 };
 

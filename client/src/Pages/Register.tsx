@@ -20,7 +20,7 @@ const Register = () => {
     setSignupData(details);
   };
   return (
-    <div className="bg-[#f8f9fa]">
+    <div className="bg-[#f8f9fa]" >
       <CustomLogin
         inputfield={5}
         text="Register"

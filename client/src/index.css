@@ -1,13 +1,24 @@
 body {
   margin: 0;
-  font-family:Satoshi!important;
-  background-color: #f8f9fa;
+  font-family: Satoshi !important;
+
   color: #121224;
   box-sizing: border-box;
+  font-size: 62.5%;
+}
+@media screen and (min-width: 0px) and (max-width: 850px) {
+  body {
+    background-color: #fff;
+  }
 }
 
+@media screen and (min-width: 851px) and (max-width: 2000px) {
+  body {
+    background-color: #f8f9fa;
+  }
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 @tailwind base;

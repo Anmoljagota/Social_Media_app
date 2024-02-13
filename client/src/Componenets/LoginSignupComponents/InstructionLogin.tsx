@@ -21,7 +21,7 @@ const InstructionLogin = ({ instructionText }: { instructionText: string }) => {
   };
   return (
     <div
-      className="h-[60vh] w-1/4 p-4 bg-white"
+      className="w-[100%] p-4"
       style={{
         boxShadow:
           "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
