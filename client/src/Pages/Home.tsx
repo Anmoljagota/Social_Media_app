@@ -6,8 +6,8 @@ import { Box } from "@mui/material";
 const Home = () => {
  
   return (
-    <div className=" w-[4/4] mt-28 h-[100vh]">
-      <Box className="flex w-[80%] m-auto  justify-between">
+    <div className=" w-[4/4] mt-28">
+      <Box className="flex w-[75%] m-auto  justify-between" border={"1px solid red"}>
         <Profile />
         <Posts />
         <Messages />
