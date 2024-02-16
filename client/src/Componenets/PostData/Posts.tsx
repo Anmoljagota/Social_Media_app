@@ -21,7 +21,6 @@ const Posts = () => {
 
   return (
     <div
-
       className="w-[44%] h-[auto] cursor-pointer"
     >
       {postdata.map((items) => (

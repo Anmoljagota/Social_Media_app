@@ -74,7 +74,15 @@ const CustomLogin: React.FC<details_type> = ({
       name: "city",
     },
   ];
-
+  const registerdetails =
+    text === "login"
+      ? {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+        }
+      : {display:"block"};
   const LoginPlaceholder: user_input_data_type[] = [
     {
       details: "email",
@@ -110,13 +118,8 @@ const CustomLogin: React.FC<details_type> = ({
       </Box>
 
       <main
-        className="flex justify-evenly  md:w-[95%] xsm:w-full m-auto"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-        }}
+        className="flex justify-evenly  md:w-[95%] xsm:w-full m-auto mt-10"
+       
       >
         <Box className="bg-white xsm:hidden md:block h-[100%]">
           <InstructionLogin instructionText={text} />
