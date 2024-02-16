@@ -15,7 +15,7 @@ const Popover = () => {
         >
           View Profile
         </button>
-        <CustomizedDialogs/>
+       
         
       </div>
     </div>

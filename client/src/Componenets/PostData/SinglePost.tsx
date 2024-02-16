@@ -8,7 +8,7 @@ const SinglePost = ({ data }: { data: postdataobject }) => {
   return (
     <>
       <section
-        className="min-h-screen bg-white"
+        className="min-h-screen bg-white  mt-4  rounded-lg"
         style={{
           boxShadow:
             "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
