@@ -8,6 +8,7 @@ import {
 } from "./actionTypes";
 import { Dispatch } from "redux";
 import axios from "axios";
+import { BACKEND_BASE_URL } from "../../utils/constant";
 interface RegisterUserDetails {
   name?: string;
   email?: string;
@@ -21,7 +22,7 @@ const UserData =
   (dispatch: Dispatch) => {
     dispatch({ type: USER_SIGNUP_LOADING });
     return axios
-      .post("http://localhost:8000/register", data)
+      .post(`${BACKEND_BASE_URL}/register`, data)
       .then((res) => {
         console.log("res data", res.data);
         dispatch({ type: USER_SIGNUP_SUCCESS, payload: res.data });
@@ -37,7 +38,7 @@ const LoginUser =
   (dispatch: Dispatch) => {
     dispatch({ type: USER_SIGNUP_LOADING });
     return axios
-      .post("http://localhost:8000/login", data)
+      .post(`${BACKEND_BASE_URL}/login`, data)
       .then((res) => {
      console.log(res.data,"ressssss")
         if (res.data !== "Wrong Credentials") {

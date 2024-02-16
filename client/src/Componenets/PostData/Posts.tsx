@@ -24,9 +24,9 @@ const Posts = () => {
 
       className="w-[44%] h-[auto] cursor-pointer"
     >
-      {postdata.map((items) => (
+      {/* {postdata?.map((items) => (
         <SinglePost data={items} key={items.postId} />
-      ))}
+      ))} */}
     </div>
   );
 };
