@@ -119,7 +119,6 @@ export default function CustomizedDialogs() {
   
     dispatch(ADD_POST_DATA(formdata));
   };
-  console.log("i am fileeee", newfile);
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>

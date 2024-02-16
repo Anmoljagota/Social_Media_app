@@ -23,8 +23,8 @@ const UserData =
     return axios
       .post("http://localhost:8000/register", data)
       .then((res) => {
-        console.log("res data", res.data);
         dispatch({ type: USER_SIGNUP_SUCCESS, payload: res.data });
+        return res
       })
       .catch((err) => {
         dispatch({ type: USER_SIGNUP_ERROR, payload: err });
@@ -39,7 +39,6 @@ const LoginUser =
     return axios
       .post("http://localhost:8000/login", data)
       .then((res) => {
-     console.log(res.data,"ressssss")
         if (res.data !== "Wrong Credentials") {
           localStorage.setItem("token", res.data);
         }

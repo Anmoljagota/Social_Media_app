@@ -14,16 +14,14 @@ const Posts = () => {
   const { postdata } = useSelector((details: detail) => {
     return details.postData;
   }, shallowEqual);
-  console.log("ia m data", postdata);
   React.useEffect(() => {
     dispatch(GET_POST_DATA());
   }, []);
-
   return (
     <div
       className="w-[44%] h-[auto] cursor-pointer"
     >
-      {postdata.map((items) => (
+      {postdata.length >=1 && postdata.map((items) => (
         <SinglePost data={items} key={items.postId} />
       ))}
     </div>
