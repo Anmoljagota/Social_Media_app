@@ -8,11 +8,12 @@ import {
   ADD_POST_DATA_SUCCESS,
   ADD_POST_DATA_ERROR,
 } from "./actionTypes";
+import { BACKEND_BASE_URL } from "../../utils/constant";
 
 const GET_POST_DATA = (): any => (dispatch: Dispatch) => {
   dispatch({ type: POST_DATA_LOADING });
   axios
-    .get("http://localhost:8000/post")
+    .get(`${BACKEND_BASE_URL}/post`)
     .then((res) => {
       dispatch({ type: POST_DATA_SUCCESS, payload: res.data });
     })
@@ -27,7 +28,7 @@ const ADD_POST_DATA =
     console.log("kkkkkk", formdata);
     dispatch({ type: ADD_POST_DATA_LOADING });
     axios
-      .post("http://localhost:8000/post", formdata, {
+      .post(`${BACKEND_BASE_URL}/post`, formdata, {
         headers: {
           "Content-Type": "multipart/formdata",
           auth: localStorage.getItem("token"),
