@@ -56,7 +56,14 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs({ setChange, change }: any) {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const buttonstyle = {
@@ -78,17 +85,12 @@ export default function CustomizedDialogs() {
     { icon: <RxCalendar /> },
     { icon: <RiMoreLine /> },
   ];
-  const [open, setOpen] = React.useState(false);
+
   const [selectedFile, setselectedFile] = React.useState<string | null>(null);
-  const [isDisabled, setisDisabled] = React.useState<boolean>(false);
+  const [isDisabled, setisDisabled] = React.useState<boolean>(true);
   const [newfile, setNewfile] = React.useState<string | Blob>("");
   const [description, setDescription] = React.useState<string>("");
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
@@ -99,32 +101,53 @@ export default function CustomizedDialogs() {
         setselectedFile(e.target?.result as string);
       };
       reader.readAsDataURL(file);
-      setisDisabled(true);
-    } else {
       setisDisabled(false);
+    } else {
+      setisDisabled(true);
     }
   };
   const handleDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (event.target.value.length > 0) {
       setDescription(event.target.value);
-      setisDisabled(true);
-    } else {
       setisDisabled(false);
+    } else {
+      setisDisabled(true);
     }
   };
-  const handlePostData = () => {
+  const handlePostData = async () => {
     const formdata = new FormData();
     formdata.append("file", newfile);
     formdata.append("description", JSON.stringify(description));
-  
-    dispatch(ADD_POST_DATA(formdata));
+
+    const promise = dispatch(ADD_POST_DATA(formdata));
+
+    return promise;
   };
-  console.log("i am fileeee", newfile);
+  const PostClose = async () => {
+    isDisabled === false && handleClose();
+    isDisabled === false &&
+      handlePostData().then((res) => {
+        setChange(!change);
+        setisDisabled(true);
+      });
+  };
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open dialog
-      </Button>
+      <Box className="flex  bg-white  justify-between items-center p-2 rounded-lg">
+        <img
+          src="https://media.licdn.com/dms/image/D5635AQGIOGeEf26XfA/profile-framedphoto-shrink_100_100/0/1702991658835?e=1708660800&v=beta&t=uK91r8Dc5fVkYj5BbNktAkmPK2cmz1eUqRVi3W9E40Y"
+          className="w-[45px]	h-[45px] rounded-[50%] ml-[9px] mr-[9px]"
+        />
+        <Box
+          className="w-full p-[.6rem] rounded-[2rem] hover:bg-[#E7E5E6]"
+          border={"1px solid rgba(0,0,0,0.3)"}
+          onClick={handleClickOpen}
+        >
+          <Typography color={"rgba(0,0,0,0.6)"} fontWeight={"500"}>
+            Start a post
+          </Typography>
+        </Box>
+      </Box>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -194,8 +217,8 @@ export default function CustomizedDialogs() {
         <DialogActions>
           <Button
             autoFocus
-            style={isDisabled ? buttonstyle : buttonstyleDisabled}
-            onClick={handlePostData}
+            style={isDisabled ? buttonstyleDisabled : buttonstyle}
+            onClick={PostClose}
           >
             Post
           </Button>

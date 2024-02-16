@@ -15,7 +15,7 @@ const Profile = () => {
     >
       <Box className="flex  items-center flex-col text-center text-[12px]">
         <img
-          src="https://th.bing.com/th/id/R.d1539c5866cbade1fa3baa60ab22947b?rik=ylz48fJVEinCXg&riu=http%3a%2f%2fclipart-library.com%2fimages%2fpTqre6K8c.jpg&ehk=cGvYf7tkBaV%2f9loyHSKIcMvPLg7qKw4VmyVuOBkUu%2fY%3d&risl=&pid=ImgRaw&r=0"
+          src="https://media.licdn.com/dms/image/D5635AQGIOGeEf26XfA/profile-framedphoto-shrink_100_100/0/1702991658835?e=1708660800&v=beta&t=uK91r8Dc5fVkYj5BbNktAkmPK2cmz1eUqRVi3W9E40Y"
           className="w-[70px]	h-[70px] rounded-[50%] ml-[9px] mr-[9px]"
           style={{ border: "5px solid #44E744" }}
         />

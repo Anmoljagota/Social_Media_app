@@ -26,7 +26,7 @@ const ADD_POST_DATA =
   (dispatch: Dispatch) => {
     console.log("kkkkkk", formdata);
     dispatch({ type: ADD_POST_DATA_LOADING });
-    axios
+    return axios
       .post("http://localhost:8000/post", formdata, {
         headers: {
           "Content-Type": "multipart/formdata",
