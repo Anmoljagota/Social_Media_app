@@ -24,7 +24,6 @@ const GET_POST_DATA = (): any => (dispatch: Dispatch) => {
 const ADD_POST_DATA =
   (formdata: any): any =>
   (dispatch: Dispatch) => {
-    console.log("kkkkkk", formdata);
     dispatch({ type: ADD_POST_DATA_LOADING });
     axios
       .post("http://localhost:8000/post", formdata, {
@@ -34,11 +33,9 @@ const ADD_POST_DATA =
         },
       })
       .then((res) => {
-        console.log(res, "resssss");
         dispatch({ type: ADD_POST_DATA_SUCCESS });
       })
       .catch((err) => {
-        console.log(err, "errrrrror");
         dispatch({ type: ADD_POST_DATA_ERROR, payload: err });
       });
   };

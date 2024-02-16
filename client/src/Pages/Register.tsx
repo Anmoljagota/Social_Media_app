@@ -4,7 +4,9 @@ import CustomLogin from "../Componenets/LoginSignupComponents/CustomLogin";
 import RegisterUserDetails from "../Types/Types";
 import { UserData } from "../redux/Login/action";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signupData, setSignupData] = useState<RegisterUserDetails | null>(
     null
@@ -12,7 +14,13 @@ const Register = () => {
   const [details, setDetails] = useState<RegisterUserDetails | null>(null);
   useEffect(() => {
     if (signupData !== null) {
-      dispatch(UserData(signupData));
+      dispatch(UserData(signupData))
+      .then((res:any)=>{
+       res && navigate("/login")
+       
+      }).catch((err:any)=>{
+
+      });
     }
   }, [signupData]);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

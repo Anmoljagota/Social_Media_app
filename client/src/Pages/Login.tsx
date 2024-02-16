@@ -34,7 +34,6 @@ const Login = () => {
         setDetails={setDetails}
         details={details}
         handleSubmit={handleSubmit}
-       
       />
     </div>
   );
